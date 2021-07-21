@@ -1,6 +1,8 @@
 package br.com.algaworks.cadastrocliente.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,6 +32,15 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public static void criar() {
+        System.out.println("Digite ");
+    }
+
+    List<String> nomes = new ArrayList<>();
+    List<String> nomes2 = new ArrayList<>();
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,4 +53,5 @@ public class Cliente {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
