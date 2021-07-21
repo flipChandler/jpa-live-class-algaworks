@@ -13,7 +13,7 @@ public class Configuracao {
 	@Id
 	private Integer id;
 	
-	@MapsId
+	@MapsId // quer dizer que a pk é igual a fk
 	@OneToOne
 	private Usuario usuario;
 	

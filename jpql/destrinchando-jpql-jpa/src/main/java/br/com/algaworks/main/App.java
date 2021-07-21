@@ -17,22 +17,26 @@ public class App {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPA-PU");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		
-		//primeirasConsultas(entityManager);
+		primeiraConsulta(entityManager);
 		//escolhendoRetorno(entityManager);
 		//fazendoProjecoes(entityManager);
 		//fazendoProjecoesDTO(entityManager);
-		passandoParametros(entityManager);
+		//passandoParametros(entityManager);
 		
 		entityManager.close();
 		entityManagerFactory.close();
 	}
 	
-	public static void primeirasConsultas(EntityManager entityManager) {
+	// GERA O BD
+	public static void primeiraConsulta(EntityManager entityManager) {
 		String jpql = "SELECT u FROM Usuario u";
 		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
 		List<Usuario> usuarios = query.getResultList();
 		usuarios.forEach(usuario -> System.out.println(usuario.getId() + ", " + usuario.getNome()));
-		
+	}
+	
+	// COM WHERE NÃO GERA O BD
+	public static void primeirasConsultaWhere(EntityManager entityManager) {		
 		String jpqlSingle = "SELECT u from Usuario u where u.id = 1";
 		TypedQuery<Usuario> querySingle = entityManager.createQuery(jpqlSingle, Usuario.class);
 		Usuario single = querySingle.getSingleResult();
